@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>Desk App</title>
+    <!-- 0. Load CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+
+    <!-- 1. Load libraries -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rx/dist/rx.all.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      System.config({
+        packages: {        
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        },
+        map: {
+          angular: '/node_modules/angular/angular.js',
+          rx: '/node_modules/rx/dist/rx.all.js'
+        }
+      });
+      System.import('app/desk/module')
+            .then(null, console.error.bind(console));
+    </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <div ng-controller="DeskController">
+        {{ foo }}
+    </div>
+  </body>
+
+</html>
